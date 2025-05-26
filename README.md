@@ -80,10 +80,9 @@ Tabel 1. Komponen Dashboard
 | Curricular units 1st Semester grade  | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 1 dan hubungannya dengan status mahasiswa |
 | Curricular units 2nd Semester grade | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 2 dan hubungannya dengan status mahasiswa |
 | Average Grade | Boxplot | Numerikal | Melihat IPK |
-| Curricular units 2nd Semester enrolled | Histogram | Numerikal | Apakah jarak rumah berpengaruh terhadap attrition |
+| Curricular units 2nd Semester enrolled | Horizontal Bar Chart | Numerikal | Banyaknya SKS yang didaftarkan oleh mahasiswa |
 | Application_mode | Treemap | Kategorikal | Jalur masuk mana yang sering menghasilkan mahasiswa dropout |
 | Financial & Support Factors | Stacked Bar Chart | Kategorikal | Melihat gap dalam UKT terbaru, debtor, beasiswa |
-| Side-by-side comparison (Graduate vs Dropout vs Enrolled) | Horizontal Bar Chart | Kategorikal | Perbandingan visual antar status mahasiswa berdasarkan faktor akademik dan non-akademik |
 
 Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1. Dashboard ini dibuat interaktif agar siapapun dapat mengeksplorasi dan memperoleh insight secara mandiri dari data yang tersedia.
 
