@@ -90,7 +90,7 @@ Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1.
 ![HR Dashboard](nafa-khairunnisa-dashboard.png)
 Gambar 1. Cuplikan Dashboard
 
-Tautan dashboard dapat diakses [di sini](link).
+Tautan dashboard dapat diakses [di sini](https://public.tableau.com/views/student_dashbord/StudentPerformanceDashboard_?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
 ## Menjalankan Sistem Machine Learning
 

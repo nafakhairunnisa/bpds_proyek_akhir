@@ -24,31 +24,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import os
-import json
 import joblib
 
 # Libraries untuk data preparation
-from scipy.stats.mstats import winsorize
 from sklearn.model_selection import train_test_split
 from scipy.stats import chi2_contingency, ttest_ind
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from imblearn.over_sampling import SMOTENC
-from sklearn.preprocessing import OrdinalEncoder
 
 # Libraries untuk modeling
-import pickle
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Feature Engineering Tambahan
-from sklearn.preprocessing import PolynomialFeatures
-from imblearn.over_sampling import SMOTE, ADASYN, BorderlineSMOTE
-from sklearn.ensemble import VotingClassifier
+from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import GridSearchCV
 
 """### Menyiapkan data yang akan digunakan"""

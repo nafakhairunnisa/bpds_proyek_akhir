@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 
 # Load model dan encoders
-with open('best_model.joblib', 'rb') as model_file:
+with open('model/best_model.joblib', 'rb') as model_file:
     model = joblib.load(model_file)
-with open('preprocessing_components.joblib', 'rb') as le_file:
+with open('model/preprocessing_components.joblib', 'rb') as le_file:
     preprocessing = joblib.load(le_file)
 
 st.title("Prediksi Status Mahasiswa")
