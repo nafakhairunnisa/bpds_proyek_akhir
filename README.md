@@ -94,7 +94,7 @@ Tautan dashboard dapat diakses [di sini](link).
 
 ## Menjalankan Sistem Machine Learning
 
-Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi streamlit. Model yang digunakan yaitu XGBoost yang merupakan model terbaik dengan akurasi 73% dan XGBoost unggul dalam menghasilkan nilai f1-score yang stabil.
+Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi streamlit. Model yang digunakan yaitu XGBoost yang merupakan model terbaik dengan akurasi 69.6% dan XGBoost unggul dalam menghasilkan nilai f1-score yang stabil.
 
 Berikut cara menjalankan sistem machine learning:
 
