@@ -795,7 +795,7 @@ for name, model in trained_models.items():
     plt.ylabel('Actual')
     plt.show()
 
-"""Berdasarkan hasil tersebut, model terbaik yaitu XGBoost. Model XGBoost dipilih sebagai model terbaik karena memberikan performa paling seimbang di antara ketiga model yang diuji. Meskipun seluruh model memiliki akurasi yang serupa (sekitar 69.6%), XGBoost unggul dalam menghasilkan nilai f1-score yang stabil di ketiga kelas (Dropout, Enrolled, Graduate), tanpa terlalu condong ke satu kelas tertentu. Hal ini menunjukkan bahwa XGBoost mampu menangani variasi data dengan baik dan memberikan prediksi yang lebih konsisten, menjadikannya pilihan yang paling andal dalam konteks klasifikasi status mahasiswa."""
+"""Berdasarkan hasil evaluasi, model terbaik adalah XGBoost. Meskipun seluruh model memiliki akurasi yang serupa (sekitar 69.6%), XGBoost unggul dalam menghasilkan f1-score yang lebih seimbang di ketiga kelas (Dropout, Enrolled, Graduate). Hal ini menunjukkan bahwa model mampu mengenali pola pada data dengan lebih baik dibanding model lain yang cenderung bias terhadap kelas tertentu. Oleh karena itu, XGBoost dipilih sebagai model akhir karena memberikan prediksi yang lebih adil dan konsisten, serta andal untuk mendukung pengambilan keputusan terkait status mahasiswa."""
 
 # Feature Importance untuk Logistic Regression, Random Forest, dan XGBoost
 for name, model in trained_models.items():
