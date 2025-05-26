@@ -99,7 +99,7 @@ Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi strea
 
 Berikut cara menjalankan sistem machine learning:
 
-**1. Buka direktori file predict.py berada melalui anaconda**
+**1. Buka direktori file app.py berada melalui anaconda**
 
 ```
 cd ...\bpds_proyek-akhir
@@ -108,7 +108,7 @@ cd ...\bpds_proyek-akhir
 **2. Run streamlit app**
 
 ```
-streamlit run predict.py
+streamlit run app.py
 ```
 
 Anda juga dapat mengakses aplikasi streamlitnya melalui link berikut: (Link Streamlit)[].
