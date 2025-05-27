@@ -66,7 +66,7 @@ pip install streamlit
 
 ## Business Dashboard
 
-Business dashboard adalah alat visualisasi yang menyajikan data analitik secara interaktif untuk mendukung pengambilan keputusan. Pada studi kasus ini, dashboard digunakan untuk mengetahui pengaruh tingginya dropout berdasarkan fitur-fitur yang memiliki keterkaitan signifikan dengan status mahasiswa. Dengan demikian, pihak institut dapat mengidentifikasi penyebab utama mahasiswa dropout dan mengambil keputusan berbasis data.
+Business dashboard adalah alat visualisasi yang menyajikan data analitik secara interaktif untuk mendukung pengambilan keputusan. Pada studi kasus ini, dashboard digunakan untuk mengetahui alasan tingginya dropout berdasarkan fitur-fitur yang memiliki keterkaitan signifikan dengan status mahasiswa. Dengan demikian, pihak institut dapat mengidentifikasi penyebab utama mahasiswa dropout dan mengambil keputusan berbasis data.
 
 Berikut komponen yang tercantum dalam dashboard ditunjukkan pada tabel 1.
 
@@ -76,7 +76,6 @@ Tabel 1. Komponen Dashboard
 | **KPI Summary** | Total Mahasiswa | Ringkasan | Menyajikan ringkasan data mahasiswa |
 | **Filter** | Course | Filter Global | Filter berdasarkan program studi |
 | Status | Donut Chart | Label | Mengetahui jumlah tiap status mahasiswa (Enrolled, Graduated, Dropout) |
-| Gender | Drill Down dari Donut Chart | Kategorikal | Melihat distribusi berdasarkan jenis kelamin |
 | Curricular units 1st Semester grade  | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 1 dan hubungannya dengan status mahasiswa |
 | Curricular units 2nd Semester grade | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 2 dan hubungannya dengan status mahasiswa |
 | Average Grade | Boxplot | Numerikal | Melihat IPK |
