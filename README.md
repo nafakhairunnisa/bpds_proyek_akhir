@@ -119,7 +119,7 @@ Berdasarkan hasil analisis data, visualisasi dashboard, serta implementasi model
 
 ### 1. Karakteristik Dataset dan Demografis
 
-Dari total 4424 mahasiswa, lebih dari 50% mengalami dropout. Mayoritas mahasiswa berasal dari lokal, berjenis kelamin laki-laki, dan belum menikah. Sebagian besar mahasiswa memilih untuk belajar di malam hari dan berasal dari latar belakang keluarga dengan pendidikan dan pekerjaan rendah. Meskipun sebagian besar mahasiswa memiliki utang, mereka tetap membayar SPP tepat waktu. Jumlah penerima beasiswa dan mahasiswa dengan kebutuhan khusus relatif sedikit.
+Dari total 4424 mahasiswa, 49.9% mengalami dropout. Mayoritas mahasiswa berasal dari lokal, berjenis kelamin laki-laki, dan belum menikah. Sebagian besar mahasiswa memilih untuk belajar di malam hari dan berasal dari latar belakang keluarga dengan pendidikan dan pekerjaan rendah. Meskipun sebagian besar mahasiswa memiliki utang, mereka tetap membayar SPP tepat waktu. Jumlah penerima beasiswa dan mahasiswa dengan kebutuhan khusus relatif sedikit.
 
 ### 2. Analisis Status dan Course
 
