@@ -9,9 +9,13 @@ with open('model/best_model.joblib', 'rb') as model_file:
 with open('model/preprocessing_components.joblib', 'rb') as le_file:
     preprocessing = joblib.load(le_file)
 
+preprocessor = preprocessing['preprocessor']
+categorical_features = preprocessing['categorical_features']
+numerical_features = preprocessing['numerical_features']
+
 st.title("Prediksi Status Mahasiswa")
 
-st.text_input("Nama Lengkap", "")
+name = st.text_input("Nama Lengkap", "")
 
 gender = st.selectbox(
     "Jenis Kelamin",
@@ -56,40 +60,6 @@ debtor = st.radio(
     horizontal=True
 )
 
-mothers_qualification = st.selectbox(
-    "Pendidikan Ibu",
-    [
-        "Pendidikan Menengah - Tahun ke-12 Sekolah atau Setara",
-        "Pendidikan Tinggi - Gelar Sarjana",
-        "Pendidikan Tinggi - Gelar Master",
-        "Pendidikan Tinggi - Doktor",
-        "Frekuensi Pendidikan Tinggi",
-        "Tahun ke-12 Sekolah - Tidak Tamat",
-        "Tahun ke-11 Sekolah - Tidak Tamat",
-        "Tahun ke-7 (Tua)",
-        "Lainnya - Tahun ke-11 Sekolah",
-        "Tahun ke-10 Sekolah",
-        "Kursus perdagangan umum",
-        "Pendidikan Dasar Siklus ke-3 (Tahun ke-9 / 10 / 11) atau Setara",
-        "Kursus teknis-profesional",
-        "Tahun ke-7 sekolah",
-        "Siklus ke-2 sekolah menengah umum",
-        "Tahun ke-9 sekolah - Tidak Tamat",
-        "Tahun ke-8 sekolah",
-        "Tidak diketahui",
-        "Tidak dapat membaca atau menulis",
-        "Dapat membaca tanpa sekolah tahun ke-4",
-        "Pendidikan dasar siklus pertama (tahun ke-4 / 5) atau setara",
-        "Pendidikan dasar siklus ke-2 (tahun ke-6/7/8) atau sederajat",
-        "Kursus spesialisasi teknologi",
-        "Pendidikan tinggi - sarjana (siklus ke-1)",
-        "Kursus spesialisasi pendidikan tinggi",
-        "Kursus teknis profesional yang lebih tinggi",
-        "Pendidikan tinggi - Master (siklus ke-2)",
-        "Pendidikan tinggi - Doktor (siklus ke-3)"
-    ]
-)
-
 fathers_qualification = st.selectbox(
     "Pendidikan Ayah",
     [
@@ -129,18 +99,59 @@ fathers_qualification = st.selectbox(
     ]
 )
 
+mothers_qualification = st.selectbox(
+    "Pendidikan Ibu",
+    [
+        "Pendidikan Menengah - Tahun ke-12 Sekolah atau Setara",
+        "Pendidikan Tinggi - Gelar Sarjana",
+        "Pendidikan Tinggi - Gelar Master",
+        "Pendidikan Tinggi - Doktor",
+        "Frekuensi Pendidikan Tinggi",
+        "Tahun ke-12 Sekolah - Tidak Tamat",
+        "Tahun ke-11 Sekolah - Tidak Tamat",
+        "Tahun ke-7 (Tua)",
+        "Lainnya - Tahun ke-11 Sekolah",
+        "Tahun ke-10 Sekolah",
+        "Kursus perdagangan umum",
+        "Pendidikan Dasar Siklus ke-3 (Tahun ke-9 / 10 / 11) atau Setara",
+        "Kursus teknis-profesional",
+        "Tahun ke-7 sekolah",
+        "Siklus ke-2 sekolah menengah umum",
+        "Tahun ke-9 sekolah - Tidak Tamat",
+        "Tahun ke-8 sekolah",
+        "Tidak diketahui",
+        "Tidak dapat membaca atau menulis",
+        "Dapat membaca tanpa sekolah tahun ke-4",
+        "Pendidikan dasar siklus pertama (tahun ke-4 / 5) atau setara",
+        "Pendidikan dasar siklus ke-2 (tahun ke-6/7/8) atau sederajat",
+        "Kursus spesialisasi teknologi",
+        "Pendidikan tinggi - sarjana (siklus ke-1)",
+        "Kursus spesialisasi pendidikan tinggi",
+        "Kursus teknis profesional yang lebih tinggi",
+        "Pendidikan tinggi - Master (siklus ke-2)",
+        "Pendidikan tinggi - Doktor (siklus ke-3)"
+    ]
+)
+
 sec_sem_enrolled = st.slider("SKS Terdaftar di Semester 2", 0, 24, 17)
 
 first_sem_grade = st.number_input("IP Semester 1")
+if not 0 <= first_sem_grade <= 4:
+    st.warning("IP Semester 1 harus antara 0 dan 4.")
+
 sec_sem_grade = st.number_input("IP Semester 2")
+if not 0 <= sec_sem_grade <= 4:
+    st.warning("IP Semester 2 harus antara 0 dan 4.")
 
 avg_grade = st.number_input("IPK", min_value=0.00, max_value=4.00)
+if not 0 <= avg_grade <= 4:
+    st.warning("IPK harus antara 0 dan 4.")
 
 
 predict = st.button("Predict Status")
 
 if predict:
-    # Prepare input data
+    # Menyiapkan data input
     input_data = {
         'Gender': gender,
         'Course': course,
@@ -156,42 +167,21 @@ if predict:
         'avg_grade': avg_grade
     }
     
-    # Convert to DataFrame
+    # Konversi ke DataFrame
     input_df = pd.DataFrame([input_data])
-    
-    # Transform categorical features using preprocessing components
-    categorical_features = ['Gender', 'Course', 'Application_mode', 'Tuition_fees_up_to_date', 
-                          'Scholarship_holder', 'Debtor', 'Mothers_qualification', 'Fathers_qualification']
-    
-    for feature in categorical_features:
-        if feature in preprocessing:
-            le = preprocessing[feature]
-            input_df[feature] = le.transform(input_df[feature])
-    
-    # Make prediction
-    prediction = model.predict(input_df)
-    prediction_proba = model.predict_proba(input_df)
-    
-    # Display results
-    st.write("---")
-    st.subheader("Hasil Prediksi")
-    
-    if prediction[0] == 1:
-        st.error("Mahasiswa berisiko Dropout")
-    else:
-        st.success("Mahasiswa tidak berisiko Dropout")
-    
-    # Show probability
-    dropout_prob = prediction_proba[0][1] * 100
-    st.write(f"Probabilitas Dropout: {dropout_prob:.2f}%")
-    
-    # Show feature importance if available
-    if hasattr(model, 'feature_importances_'):
-        st.subheader("Faktor yang Mempengaruhi")
-        feature_importance = pd.DataFrame({
-            'Fitur': input_df.columns,
-            'Penting': model.feature_importances_
-        })
-        feature_importance = feature_importance.sort_values('Penting', ascending=False)
-        st.bar_chart(feature_importance.set_index('Fitur'))
 
+    # Transformasi input
+    input_df = input_df[categorical_features + numerical_features]
+    input_transformed = preprocessor.transform(input_df)
+    input_array = input_transformed.toarray()
+
+    # Prediksi
+    prediction = model.predict(input_array)
+    prediction_proba = model.predict_proba(input_array)
+
+    # Mapping label
+    label_encoder = preprocessing['label_encoder']
+    predicted_label = label_encoder.inverse_transform(prediction)
+
+    st.success(f"Hasil Prediksi: {predicted_label[0]}")
+    
