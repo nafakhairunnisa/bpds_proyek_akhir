@@ -103,15 +103,18 @@ predict = st.button("Predict Status")
 if predict:
     # Menyiapkan data input
     input_data = {
-        'Gender': gender,
-        'Course': course,
+        'Marital_status': marital_status,
         'Application_mode': app_mode,
-        'Tuition_fees_up_to_date': tuition_fees_up_to_date,
-        'Scholarship_holder': scholarship_holder,
+        'Application_order': int(app_order),
+        'Course': course,
+        'Daytime_evening_attendance': daytime_evening_attendance,
+        'Age_at_enrollment': age_at_enrollment,
+        'Curricular_units_1st_sem_approved': curricular_units_1st_sem_approved,
+        'Curricular_units_2nd_sem_approved': curricular_units_2nd_sem_approved,
         'Debtor': debtor,
-        'Mothers_qualification': mothers_qualification,
-        'Fathers_qualification': fathers_qualification,
-        'Curricular_units_2nd_sem_enrolled': sec_sem_enrolled,
+        'Tuition_fees_up_to_date': tuition_fees_up_to_date,
+        'Gender': gender,
+        'Scholarship_holder': scholarship_holder,
         'Curricular_units_1st_sem_grade': first_sem_grade,
         'Curricular_units_2nd_sem_grade': sec_sem_grade,
         'avg_grade': avg_grade
@@ -130,7 +133,6 @@ if predict:
     prediction_proba = model.predict_proba(input_array)
 
     # Mapping label
-    label_encoder = preprocessing['label_encoder']
     predicted_label = label_encoder.inverse_transform(prediction)
 
     st.success(f"Hasil Prediksi: {predicted_label[0]}")
