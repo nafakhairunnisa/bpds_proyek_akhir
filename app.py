@@ -1,13 +1,14 @@
 import streamlit as st
 import joblib
 import pandas as pd
-import numpy as np
 
 # Load model dan encoders
-with open('model/best_model.joblib', 'rb') as model_file:
+with open('model/rf_model.joblib', 'rb') as model_file:
     model = joblib.load(model_file)
-with open('model/preprocessing_components.joblib', 'rb') as le_file:
+with open('model/preprocessing.joblib', 'rb') as le_file:
     preprocessing = joblib.load(le_file)
+with open('model/label_encoder.joblib', 'rb') as le_file:
+    label_encoder = joblib.load(le_file)
 
 preprocessor = preprocessing['preprocessor']
 categorical_features = preprocessing['categorical_features']
@@ -21,6 +22,8 @@ gender = st.selectbox(
     "Jenis Kelamin",
     ("Laki-laki", "Perempuan")
 )
+
+age_at_enrollment = st.number_input("Usia Saat Mendaftar")
 
 course = st.selectbox(
     "Program Studi",
@@ -37,6 +40,17 @@ app_mode = st.selectbox(
      "2nd phase - general contingent", "3rd phase - general contingent", "Ordinance No. 533-A/99, item b2 (Different Plan)",
      "Ordinance No. 533-A/99, item b3 (Other Institution)", "Over 23 years old", "Transfer", "Change of course", "Technological specialization diploma holders",
      "Change of institution/course", "Short cycle diploma holders", "Change of institution/course (International)")
+)
+
+app_order = st.selectbox(
+    "Application Order",
+    ("1", "2", "3", "4", "5", "6", "7", "8", "9")
+)
+
+marital_status = st.selectbox(
+    "Status Pernikahan",
+    ("Lajang", "Menikah", "Duda", "Bercerai",
+    "Bersatu secara fakto", "Berpisah secara hukum")
 )
 
 tuition_fees_up_to_date = st.radio(
@@ -60,80 +74,16 @@ debtor = st.radio(
     horizontal=True
 )
 
-fathers_qualification = st.selectbox(
-    "Pendidikan Ayah",
-    [
-        "Pendidikan Menengah - Tahun ke-12 Sekolah atau Setara",
-        "Pendidikan Tinggi - Gelar Sarjana",
-        "Pendidikan Tinggi - Gelar Magister",
-        "Pendidikan Tinggi - Gelar Doktor",
-        "Frekuensi Pendidikan Tinggi",
-        "Tahun ke-12 Sekolah - Tidak Selesai",
-        "Tahun ke-11 Sekolah - Tidak Selesai",
-        "Tahun ke-7 (Tua)",
-        "Lainnya - Tahun ke-11 Sekolah",
-        "Kursus Sekolah Menengah Pelengkap tahun ke-2",
-        "Tahun ke-10 Sekolah",
-        "Kursus Perdagangan Umum",
-        "Pendidikan Dasar Siklus ke-3 (Tahun ke-9 / 10 / 11) atau Setara",
-        "Kursus Pelengkap Sekolah Menengah Atas",
-        "Kursus Teknis-Profesional",
-        "Kursus Pelengkap Sekolah Menengah Atas - tidak selesai",
-        "Tahun ke-7 sekolah",
-        "Siklus ke-2 kursus sekolah menengah umum",
-        "Tahun ke-9 sekolah - tidak selesai",
-        "Tahun ke-8 sekolah",
-        "Kursus Umum Administrasi dan Perdagangan",
-        "Akuntansi dan Administrasi Tambahan",
-        "Tidak diketahui",
-        "Tidak dapat membaca atau menulis",
-        "Dapat membaca tanpa harus bersekolah di tahun ke-4",
-        "Pendidikan Dasar Siklus ke-1 (tahun ke-4/5) atau setara",
-        "Pendidikan dasar siklus ke-2 (tahun ke-6/7/8) atau sederajat",
-        "Kursus spesialisasi teknologi",
-        "Pendidikan tinggi - sarjana (siklus ke-1)",
-        "Kursus spesialisasi pendidikan tinggi",
-        "Kursus teknis profesional yang lebih tinggi",
-        "Pendidikan tinggi - Master (siklus ke-2)",
-        "Pendidikan tinggi - Doktor (siklus ke-3)"
-    ]
+daytime_evening_attendance = st.radio(
+    "Mengambil Kelas Siang/Malam",
+    ["Siang", "Malam"],
+    index=None,
+    horizontal=True
 )
 
-mothers_qualification = st.selectbox(
-    "Pendidikan Ibu",
-    [
-        "Pendidikan Menengah - Tahun ke-12 Sekolah atau Setara",
-        "Pendidikan Tinggi - Gelar Sarjana",
-        "Pendidikan Tinggi - Gelar Master",
-        "Pendidikan Tinggi - Doktor",
-        "Frekuensi Pendidikan Tinggi",
-        "Tahun ke-12 Sekolah - Tidak Tamat",
-        "Tahun ke-11 Sekolah - Tidak Tamat",
-        "Tahun ke-7 (Tua)",
-        "Lainnya - Tahun ke-11 Sekolah",
-        "Tahun ke-10 Sekolah",
-        "Kursus perdagangan umum",
-        "Pendidikan Dasar Siklus ke-3 (Tahun ke-9 / 10 / 11) atau Setara",
-        "Kursus teknis-profesional",
-        "Tahun ke-7 sekolah",
-        "Siklus ke-2 sekolah menengah umum",
-        "Tahun ke-9 sekolah - Tidak Tamat",
-        "Tahun ke-8 sekolah",
-        "Tidak diketahui",
-        "Tidak dapat membaca atau menulis",
-        "Dapat membaca tanpa sekolah tahun ke-4",
-        "Pendidikan dasar siklus pertama (tahun ke-4 / 5) atau setara",
-        "Pendidikan dasar siklus ke-2 (tahun ke-6/7/8) atau sederajat",
-        "Kursus spesialisasi teknologi",
-        "Pendidikan tinggi - sarjana (siklus ke-1)",
-        "Kursus spesialisasi pendidikan tinggi",
-        "Kursus teknis profesional yang lebih tinggi",
-        "Pendidikan tinggi - Master (siklus ke-2)",
-        "Pendidikan tinggi - Doktor (siklus ke-3)"
-    ]
-)
+curricular_units_1st_sem_approved = st.slider("SKS yang Disetujui oleh Mahasiswa di Semester 1", 0, 24, 17)
 
-sec_sem_enrolled = st.slider("SKS Terdaftar di Semester 2", 0, 24, 17)
+curricular_units_2nd_sem_approved = st.slider("SKS yang Disetujui oleh Mahasiswa di Semester 1", 0, 24, 17)
 
 first_sem_grade = st.number_input("IP Semester 1")
 if not 0 <= first_sem_grade <= 4:

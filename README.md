@@ -31,7 +31,7 @@ Proyek ini menggunakan data historis akademik dan latar belakang mahasiswa, term
 
 ### Persiapan
 
-Sumber data: [Employee Data](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance)
+Sumber data: [Student Data](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance)
 
 **Setup Environment**
 
@@ -93,7 +93,7 @@ Tautan dashboard dapat diakses [di sini](https://public.tableau.com/views/studen
 
 ## Menjalankan Sistem Machine Learning
 
-Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi streamlit. Model yang digunakan yaitu XGBoost yang merupakan model terbaik dengan akurasi 69.6% dan XGBoost unggul dalam menghasilkan nilai f1-score yang stabil.
+Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi streamlit. Model yang digunakan yaitu Random Forest yang merupakan model terbaik dengan akurasi 74% dan Random Forest unggul dalam menghasilkan nilai f1-score yang stabil.
 
 Berikut cara menjalankan sistem machine learning:
 
