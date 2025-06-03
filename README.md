@@ -109,7 +109,7 @@ cd ...\bpds_proyek-akhir
 streamlit run app.py
 ```
 
-Anda juga dapat mengakses aplikasi streamlitnya melalui link berikut: [Link Streamlit](status-mahasiswa-predict.streamlit.app).
+Anda juga dapat mengakses aplikasi streamlitnya melalui link berikut: [Link Streamlit](https://status-mahasiswa-predict.streamlit.app/).
 
 ## Conclusion
 
