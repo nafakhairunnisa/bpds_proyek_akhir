@@ -21,22 +21,36 @@ Original file is located at
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 import math
+import os
+import json
 import joblib
 
 # Libraries untuk data preparation
+from scipy.stats.mstats import winsorize
 from sklearn.model_selection import train_test_split
 from scipy.stats import chi2_contingency, ttest_ind
+from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
 from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import OrdinalEncoder
 from scipy.stats import f_oneway
 
 # Libraries untuk modeling
+import pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# Feature Engineering Tambahan
+from sklearn.preprocessing import PolynomialFeatures
+from imblearn.over_sampling import SMOTE, ADASYN, BorderlineSMOTE
+from sklearn.ensemble import VotingClassifier
+from sklearn.model_selection import GridSearchCV
 
 """### Menyiapkan data yang akan digunakan"""
 
@@ -226,11 +240,13 @@ print(outliers_per_feature.sort_values(ascending=False))
 total_outliers = outlier_mask.sum().sum()
 print(f"\nTotal jumlah outlier (sel): {total_outliers}")
 
+df['Status'].value_counts()
+
 # Cek distribusi Status
 
 # Hitung jumlah masing-masing kategori Status
 status_counts = df['Status'].value_counts()
-labels = ['Dropout (0)', 'Graduate (1),', 'Enrolled (2)']
+labels = ['Graduate (0)', 'Dropout (1),', 'Enrolled (2)']
 colors = ["#72BCD4", "#D3D3D3", "#8ad8ed"]
 
 # Pie chart

@@ -89,7 +89,7 @@ Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1.
 ![HR Dashboard](nafa-khairunnisa-dashboard.png)
 Gambar 1. Cuplikan Dashboard
 
-Tautan dashboard dapat diakses [di sini](https://public.tableau.com/views/student_dashbord/StudentPerformanceDashboard_?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
+Tautan dashboard dapat diakses [di sini](https://public.tableau.com/shared/4QBMDBW99?:display_count=n&:origin=viz_share_link).
 
 ## Menjalankan Sistem Machine Learning
 
@@ -118,70 +118,65 @@ Berdasarkan hasil analisis data, visualisasi dashboard, serta implementasi model
 **Insights:**
 
 ### 1. Karakteristik Dataset dan Demografis
-
-Dari total 4424 mahasiswa, 49.9% mengalami dropout. Mayoritas mahasiswa berasal dari lokal, berjenis kelamin laki-laki, dan belum menikah. Sebagian besar mahasiswa memilih untuk belajar di malam hari dan berasal dari latar belakang keluarga dengan pendidikan dan pekerjaan rendah. Meskipun sebagian besar mahasiswa memiliki utang, mereka tetap membayar SPP tepat waktu. Jumlah penerima beasiswa dan mahasiswa dengan kebutuhan khusus relatif sedikit.
+Dataset mencakup total 4.424 mahasiswa. Sebagian besar mahasiswa berusia antara 15–25 tahun, belum menikah, dan mengikuti kelas siang (89.08%). Hanya sebagian kecil yang mengikuti kelas malam (10.92%). Status pernikahan mayoritas adalah single, dengan jumlah yang sangat kecil berasal dari kelompok menikah, bercerai, atau duda/janda. Mahasiswa penerima beasiswa hanya mencakup 24.84%, sedangkan 11.37% mahasiswa tercatat sebagai debitur. Sementara itu, 11.93% mahasiswa belum memperbarui informasi pembayaran SPP mereka.
 
 ### 2. Analisis Status dan Course
-
-Persentase dropout merupakan yang tertinggi (hampir setengah dari total), diikuti oleh mahasiswa yang lulus dan yang masih aktif. Course Nursing mencatat tingkat kelulusan tertinggi, sementara course lain memiliki jumlah mahasiswa yang lebih sedikit (kurang dari 400). Course Management dan Management (evening attendance) memiliki tingkat dropout tertinggi, yang menandakan minat rendah pada course tersebut.
+Sebagian besar mahasiswa telah lulus (49.93%), diikuti oleh yang dropout (32.12%) dan mahasiswa aktif/enrolled (17.95%). Tingginya angka dropout menjadi indikator penting untuk evaluasi sistem pembelajaran atau faktor eksternal lainnya. Course dengan jumlah mahasiswa terbanyak adalah Nursing dan Vet Nursing, disusul oleh bidang seperti Journalism, Social Service, dan Management. Dominasi bidang kesehatan menunjukkan minat tinggi terhadap jurusan tersebut dibandingkan jurusan lain seperti Agronomy atau Marketing.
 
 ### 3. Analisis Waktu Kuliah dan Status Pernikahan
-
-Kelas malam menunjukkan tingkat kelulusan yang lebih tinggi dibandingkan kelas siang yang memiliki tingkat dropout lebih tinggi, mengindikasikan bahwa jadwal kuliah siang bisa menjadi tantangan. Dari segi status pernikahan, mahasiswa single memiliki tingkat kelulusan lebih tinggi dibandingkan mahasiswa yang sudah menikah. Status pernikahan lain seperti divorced, widower, dan legally separated memiliki distribusi yang sangat sedikit. Hal ini menunjukkan bahwa tanggungan mahasiswa single lebih aman sehingga masih bisa melanjutkan kuliah.
+Meskipun jumlah mahasiswa kelas siang jauh lebih banyak, kelas malam tampaknya memiliki tingkat kelulusan yang lebih tinggi dan tingkat dropout yang lebih rendah. Hal ini mengindikasikan bahwa mahasiswa malam mungkin lebih termotivasi atau memiliki komitmen belajar yang lebih tinggi. Dari sisi status pernikahan, mahasiswa yang belum menikah memiliki tingkat kelulusan lebih tinggi dibandingkan yang sudah menikah. Mahasiswa yang bercerai atau duda/janda sangat sedikit dan tidak menunjukkan pola signifikan.
 
 ### 4. Analisis Akademik
-
-Semakin banyak mata kuliah yang diambil dan dikreditkan, semakin tinggi nilai akhir yang diperoleh mahasiswa. Namun, usia saat masuk kuliah tidak terlalu mempengaruhi performa akademik mahasiswa.
+Mahasiswa yang dropout memiliki rata-rata nilai dan jumlah mata kuliah yang dikreditkan lebih rendah dibandingkan mahasiswa yang lulus. Hal ini terlihat pada metrik seperti rata-rata nilai akhir (average grade), nilai semester 1 dan 2, serta jumlah mata kuliah yang disetujui di semester 2. Sebaliknya, mahasiswa yang lulus menunjukkan performa akademik yang lebih stabil sejak awal. Usia saat masuk kuliah tidak menunjukkan pengaruh signifikan terhadap kinerja akademik.
 
 ### 5. Faktor Signifikan yang Berpengaruh
-
-Faktor-faktor berikut memiliki pengaruh signifikan terhadap distribusi status mahasiswa:
+Beberapa faktor terlihat konsisten memengaruhi status akhir mahasiswa:
 
 **Faktor Demografis dan Administratif:**
 
-- Application mode: Mahasiswa di atas 23 tahun
-- Gender: Laki-laki
-- Status beasiswa: Penerima beasiswa
-- Status pembayaran: Pembayaran tepat waktu
-- Status utang: Memiliki utang
+- Waktu kuliah: Mahasiswa kelas malam menunjukkan performa lebih baik dibanding kelas siang.
+- Status beasiswa: Mahasiswa penerima beasiswa cenderung memiliki performa lebih baik.
+- Status utang dan pembayaran SPP: Mahasiswa tanpa utang dan yang memperbarui informasi SPP menunjukkan kecenderungan kelulusan lebih tinggi.
 
 **Faktor Akademik:**
 
-- Nilai semester 1
-- Nilai semester 2
-- Jumlah mata kuliah yang diambil semester 2
-- Rata-rata nilai (avg_grade)
-- Tingkat kelulusan semester 1 (approval_rate_1st)
-- Tingkat kelulusan semester 2 (approval_rate_2nd)
+- Nilai semester 1 dan 2
+- Rata-rata nilai keseluruhan (average grade)
+- Jumlah dan kelulusan mata kuliah semester awal
 
 **Faktor Course dan Latar Belakang:**
 
-- Course: Informatika dan Keperawatan
-- Kualifikasi orang tua: Tidak diketahui
+- Course Nursing dan Vet Nursing memiliki jumlah mahasiswa terbanyak dan kemungkinan kontribusi kelulusan tinggi.
+- Course dengan dominasi dropout seperti Management perlu mendapatkan perhatian khusus terkait kurikulum atau dukungan akademik.
 
 ### Rekomendasi Action Items
 
 Berdasarkan analisis yang telah dilakukan, berikut rekomendasi action items untuk mengurangi tingkat dropout mahasiswa:
 
 1. **Program Bimbingan Akademik Intensif**
+Banyak mahasiswa yang dropout menunjukkan performa akademik rendah sejak semester pertama. Oleh karena itu:
 
    - Menerapkan sistem monitoring akademik yang lebih ketat, terutama untuk mahasiswa dengan nilai rendah di semester 1 dan 2
    - Menyediakan program bimbingan belajar tambahan untuk mata kuliah dengan tingkat kelulusan rendah
    - Membuat program mentoring yang menghubungkan mahasiswa baru dengan senior yang berprestasi
 
 2. **Penyesuaian Jadwal dan Sistem Pembelajaran**
+Insight menunjukkan bahwa mahasiswa kelas siang memiliki tingkat dropout lebih tinggi dibanding kelas malam. Maka dari itu:
 
    - Mengoptimalkan jadwal kuliah siang dengan mempertimbangkan faktor-faktor yang mempengaruhi kehadiran
    - Menerapkan sistem pembelajaran hybrid (kombinasi online dan offline) untuk memberikan fleksibilitas
    - Menyediakan rekaman perkuliahan untuk mahasiswa yang tidak bisa hadir
 
 3. **Program Dukungan Finansial dan Beasiswa**
+Ditemukan bahwa sebagian besar mahasiswa memiliki utang, namun tetap membayar SPP tepat waktu, sementara jumlah penerima beasiswa masih rendah. Untuk itu:
 
    - Memperluas program beasiswa untuk mahasiswa berprestasi dengan latar belakang ekonomi rendah
    - Menyediakan program kerja paruh waktu di kampus untuk membantu mahasiswa dengan masalah finansial
    - Membuat sistem pembayaran SPP yang lebih fleksibel dengan skema cicilan yang terjangkau
 
 4. **Peningkatan Kualitas Course Management**
+Beberapa program studi seperti Management memiliki tingkat dropout tinggi. Maka:
+
    - Melakukan evaluasi dan perbaikan kurikulum untuk course dengan tingkat dropout tinggi
    - Meningkatkan kualitas pengajaran dengan program pengembangan dosen
    - Membuat program orientasi yang lebih komprehensif untuk mahasiswa baru, terutama untuk course dengan tingkat dropout tinggi
