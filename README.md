@@ -70,18 +70,22 @@ Business dashboard adalah alat visualisasi yang menyajikan data analitik secara 
 
 Berikut komponen yang tercantum dalam dashboard ditunjukkan pada tabel 1.
 
-Tabel 1. Komponen Dashboard
-| Komponen | Visualisasi | Jenis Data | Tujuan |
-| ----------------------------- | --------------------------- | ------------- | ------------- |
-| **KPI Summary** | Total Mahasiswa | Ringkasan | Menyajikan ringkasan data mahasiswa |
-| **Filter** | Course | Filter Global | Filter berdasarkan program studi |
-| Status | Donut Chart | Label | Mengetahui jumlah tiap status mahasiswa (Enrolled, Graduated, Dropout) |
-| Curricular units 1st Semester grade  | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 1 dan hubungannya dengan status mahasiswa |
-| Curricular units 2nd Semester grade | Boxplot | Numerikal | Melihat distribusi nilai IP di semester 2 dan hubungannya dengan status mahasiswa |
-| Average Grade | Boxplot | Numerikal | Melihat IPK |
-| Curricular units 2nd Semester enrolled | Horizontal Bar Chart | Numerikal | Banyaknya SKS yang didaftarkan oleh mahasiswa |
-| Application_mode | Treemap | Kategorikal | Jalur masuk mana yang sering menghasilkan mahasiswa dropout |
-| Financial & Support Factors | Stacked Bar Chart | Kategorikal | Melihat gap dalam UKT terbaru, debtor, beasiswa |
+| **Komponen**                       | **Visualisasi**        | **Jenis Data**        | **Tujuan**                                                                     |
+| ---------------------------------- | ---------------------- | --------------------- | ------------------------------------------------------------------------------ |
+| **Total Students (KPI Summary)**   | Angka Total (4,424)    | Ringkasan             | Memberikan ringkasan jumlah seluruh mahasiswa dalam dataset                    |
+| **Status**                         | Donut Chart            | Kategorikal           | Menunjukkan proporsi mahasiswa yang lulus, dropout, dan masih aktif            |
+| **Gender**                         | Teks / Filter Dropdown | Kategorikal           | (Opsional) Untuk melihat data berdasarkan jenis kelamin                        |
+| **Attendance (Waktu Kuliah)**      | Donut Chart            | Kategorikal           | Menunjukkan distribusi mahasiswa berdasarkan waktu kuliah (Daytime vs Evening) |
+| **Debtor**                         | Donut Chart            | Kategorikal           | Menampilkan status mahasiswa yang memiliki utang                               |
+| **Tuition Fees Update**            | Donut Chart            | Kategorikal           | Menunjukkan apakah UKT mahasiswa telah diperbarui                              |
+| **Scholarship Holder**             | Donut Chart            | Kategorikal           | Menunjukkan proporsi mahasiswa penerima beasiswa                               |
+| **Course**                         | Treemap                | Kategorikal           | Visualisasi persebaran mahasiswa per program studi                             |
+| **Age at Enrollment**              | Horizontal Bar Chart   | Kategorikal Numerikal | Menampilkan distribusi usia mahasiswa saat masuk kuliah                        |
+| **Marital Status**                 | Bar Chart Vertikal     | Kategorikal           | Menunjukkan status pernikahan mahasiswa dan hubungannya dengan dropout         |
+| **Average Grade**                  | Boxplot                | Numerikal             | Memperlihatkan distribusi IPK berdasarkan status mahasiswa                     |
+| **Curricular Units 1st Sem Grade** | Boxplot                | Numerikal             | Melihat distribusi nilai semester 1 dan hubungannya dengan status mahasiswa    |
+| **Curricular Units 2nd Sem Grade** | Boxplot                | Numerikal             | Melihat distribusi nilai semester 2 dan hubungannya dengan status mahasiswa    |
+| **Application Order**              | Bar Chart Vertikal     | Kategorikal           | Menunjukkan urutan pilihan jurusan dan keterkaitannya dengan tingkat dropout   |
 
 Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1. Dashboard ini dibuat interaktif agar siapapun dapat mengeksplorasi dan memperoleh insight secara mandiri dari data yang tersedia.
 
