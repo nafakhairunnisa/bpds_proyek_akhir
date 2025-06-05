@@ -70,6 +70,7 @@ Business dashboard adalah alat visualisasi yang menyajikan data analitik secara 
 
 Berikut komponen yang tercantum dalam dashboard ditunjukkan pada tabel 1.
 
+Tabel 1. Komponen pada Business Dashboard Student
 | **Komponen**                       | **Visualisasi**        | **Jenis Data**        | **Tujuan**                                                                     |
 | ---------------------------------- | ---------------------- | --------------------- | ------------------------------------------------------------------------------ |
 | **Total Students (KPI Summary)**   | Angka Total (4,424)    | Ringkasan             | Memberikan ringkasan jumlah seluruh mahasiswa dalam dataset                    |
@@ -99,6 +100,29 @@ Tautan dashboard dapat diakses [di sini](https://public.tableau.com/shared/4QBMD
 
 Model machine learning yang telah dibuat dideploy ke dalam sebuah aplikasi streamlit. Model yang digunakan yaitu Random Forest yang merupakan model terbaik dengan akurasi 74% dan Random Forest unggul dalam menghasilkan nilai f1-score yang stabil.
 
+Adapun fitur-fitur relevan yang digunakan ditunjukkan pada tabel 2.
+
+Tabel 2. Fitur-fitur relevan
+| No. | Feature Name                          | Type        | Description                                                                 |
+|-----|---------------------------------------|-------------|-----------------------------------------------------------------------------|
+| 1   | Marital_status                        | Categorical | Status pernikahan mahasiswa (Single, Married, Divorced, dll)               |
+| 2   | Application_mode                      | Categorical | Jalur masuk atau metode pendaftaran mahasiswa                              |
+| 3   | Course                                | Categorical | Program studi yang diambil mahasiswa                                       |
+| 4   | Daytime_evening_attendance            | Categorical | Jenis kelas: Siang atau Malam                                              |
+| 5   | Debtor                                | Categorical | Status apakah mahasiswa memiliki utang (Yes/No)                            |
+| 6   | Tuition_fees_up_to_date               | Categorical | Status pembayaran SPP apakah sudah diperbarui atau belum                   |
+| 7   | Gender                                | Categorical | Jenis kelamin mahasiswa                                                    |
+| 8   | Scholarship_holder                    | Categorical | Status apakah mahasiswa menerima beasiswa (Yes/No)                         |
+| 9   | Application_order                     | Numerical   | Urutan pilihan jurusan saat mendaftar                                      |
+| 10  | avg_grade                             | Numerical   | Rata-rata nilai akademik mahasiswa                                         |
+| 11  | Age_at_enrollment                     | Numerical   | Usia mahasiswa saat pertama kali mendaftar                                 |
+| 12  | Curricular_units_1st_sem_approved     | Numerical   | Jumlah mata kuliah semester 1 yang disetujui/lulus                         |
+| 13  | Curricular_units_2nd_sem_approved     | Numerical   | Jumlah mata kuliah semester 2 yang disetujui/lulus                         |
+| 14  | Curricular_units_1st_sem_grade        | Numerical   | Nilai rata-rata mata kuliah semester 1                                     |
+| 15  | Curricular_units_2nd_sem_grade        | Numerical   | Nilai rata-rata mata kuliah semester 2                                     |
+| 16  | **Status**                            | **Label**   | Target label: Lulus / Dropout / Aktif                                      |
+
+
 Berikut cara menjalankan sistem machine learning:
 
 **1. Buka direktori file app.py berada melalui anaconda**
@@ -117,70 +141,77 @@ Anda juga dapat mengakses aplikasi streamlitnya melalui link berikut: [Link Stre
 
 ## Conclusion
 
+Pada proyek ini saya telah membuat:
+1.	Model machine learning dapat digunakan untuk memprediksi risiko dropout mahasiswa secara lebih dini.
+2.	Dashboard membantu pihak universitas dalam memahami faktor-faktor utama yang memengaruhi dropout, baik dari sisi akademik, sosial, maupun finansial.
+
 Berdasarkan hasil analisis data, visualisasi dashboard, serta implementasi model machine learning, proyek ini berhasil mengidentifikasi faktor-faktor utama yang memengaruhi banyaknya mahasiswa yang dropout.
 
-**Insights:**
+### Insights dan Rekomendasi Pengurangan Dropout Mahasiswa
 
-### 1. Karakteristik Dataset dan Demografis
-Dataset mencakup total 4.424 mahasiswa. Sebagian besar mahasiswa berusia antara 15–25 tahun, belum menikah, dan mengikuti kelas siang (89.08%). Hanya sebagian kecil yang mengikuti kelas malam (10.92%). Status pernikahan mayoritas adalah single, dengan jumlah yang sangat kecil berasal dari kelompok menikah, bercerai, atau duda/janda. Mahasiswa penerima beasiswa hanya mencakup 24.84%, sedangkan 11.37% mahasiswa tercatat sebagai debitur. Sementara itu, 11.93% mahasiswa belum memperbarui informasi pembayaran SPP mereka.
+#### 1. Karakteristik Dataset dan Demografi
+- Dataset mencakup **4.424 mahasiswa**.
+- Mayoritas berusia **15–25 tahun**, belum menikah, dan mengikuti **kelas siang (89.08%)**.
+- Hanya **24.84% mahasiswa menerima beasiswa**, sementara **11.37% merupakan debitur**.
+- **11.93% belum memperbarui informasi pembayaran SPP**.
 
-### 2. Analisis Status dan Course
-Sebagian besar mahasiswa telah lulus (49.93%), diikuti oleh yang dropout (32.12%) dan mahasiswa aktif/enrolled (17.95%). Tingginya angka dropout menjadi indikator penting untuk evaluasi sistem pembelajaran atau faktor eksternal lainnya. Course dengan jumlah mahasiswa terbanyak adalah Nursing dan Vet Nursing, disusul oleh bidang seperti Journalism, Social Service, dan Management. Dominasi bidang kesehatan menunjukkan minat tinggi terhadap jurusan tersebut dibandingkan jurusan lain seperti Agronomy atau Marketing.
+#### 2. Status Mahasiswa dan Distribusi Course
+- Status akhir mahasiswa:
+  - **Lulus**: 49.93%
+  - **Dropout**: 32.12%
+  - **Aktif (enrolled)**: 17.95%
+- Program studi dengan jumlah mahasiswa terbanyak:
+  - **Nursing**, **Vet Nursing**
+  - Diikuti oleh **Journalism**, **Social Service**, dan **Management**
+- Jurusan **Management** menunjukkan tingkat dropout tinggi → perlu evaluasi.
 
-### 3. Analisis Waktu Kuliah dan Status Pernikahan
-Meskipun jumlah mahasiswa kelas siang jauh lebih banyak, kelas malam tampaknya memiliki tingkat kelulusan yang lebih tinggi dan tingkat dropout yang lebih rendah. Hal ini mengindikasikan bahwa mahasiswa malam mungkin lebih termotivasi atau memiliki komitmen belajar yang lebih tinggi. Dari sisi status pernikahan, mahasiswa yang belum menikah memiliki tingkat kelulusan lebih tinggi dibandingkan yang sudah menikah. Mahasiswa yang bercerai atau duda/janda sangat sedikit dan tidak menunjukkan pola signifikan.
+#### 3. Waktu Kuliah dan Status Pernikahan
+- **Kelas malam** memiliki tingkat kelulusan lebih tinggi dan dropout lebih rendah dibanding kelas siang.
+- Mahasiswa **belum menikah** memiliki peluang kelulusan lebih tinggi.
+- Status menikah/divorced/janda belum menunjukkan pola signifikan karena jumlah kecil.
 
-### 4. Analisis Akademik
-Mahasiswa yang dropout memiliki rata-rata nilai dan jumlah mata kuliah yang dikreditkan lebih rendah dibandingkan mahasiswa yang lulus. Hal ini terlihat pada metrik seperti rata-rata nilai akhir (average grade), nilai semester 1 dan 2, serta jumlah mata kuliah yang disetujui di semester 2. Sebaliknya, mahasiswa yang lulus menunjukkan performa akademik yang lebih stabil sejak awal. Usia saat masuk kuliah tidak menunjukkan pengaruh signifikan terhadap kinerja akademik.
+#### 4. Kinerja Akademik dan Pola Dropout
+- Mahasiswa dropout cenderung memiliki:
+  - Nilai **semester 1 dan 2 lebih rendah**
+  - **Rata-rata nilai akhir** yang rendah
+  - **Jumlah mata kuliah yang dikreditkan** lebih sedikit
+- Mahasiswa yang lulus menunjukkan **kinerja akademik stabil sejak awal**.
+- **Usia saat masuk kuliah tidak berpengaruh signifikan**.
 
-### 5. Faktor Signifikan yang Berpengaruh
-Beberapa faktor terlihat konsisten memengaruhi status akhir mahasiswa:
+#### 5. Faktor Signifikan terhadap Dropout
 
-**Faktor Demografis dan Administratif:**
+a. Faktor Demografis dan Administratif:
+- **Kelas malam** → dropout lebih rendah
+- **Penerima beasiswa** → performa lebih baik
+- **Mahasiswa tanpa utang & update SPP** → peluang lulus lebih tinggi
 
-- Waktu kuliah: Mahasiswa kelas malam menunjukkan performa lebih baik dibanding kelas siang.
-- Status beasiswa: Mahasiswa penerima beasiswa cenderung memiliki performa lebih baik.
-- Status utang dan pembayaran SPP: Mahasiswa tanpa utang dan yang memperbarui informasi SPP menunjukkan kecenderungan kelulusan lebih tinggi.
-
-**Faktor Akademik:**
-
+b. Faktor Akademik:
 - Nilai semester 1 dan 2
-- Rata-rata nilai keseluruhan (average grade)
-- Jumlah dan kelulusan mata kuliah semester awal
+- Rata-rata nilai keseluruhan
+- Jumlah mata kuliah di semester awal
 
-**Faktor Course dan Latar Belakang:**
-
-- Course Nursing dan Vet Nursing memiliki jumlah mahasiswa terbanyak dan kemungkinan kontribusi kelulusan tinggi.
-- Course dengan dominasi dropout seperti Management perlu mendapatkan perhatian khusus terkait kurikulum atau dukungan akademik.
+c. Faktor Program Studi:
+- **Nursing & Vet Nursing** → dominan dalam kontribusi lulusan
+- **Management** → perlu perhatian karena angka dropout tinggi
 
 ### Rekomendasi Action Items
 
-Berdasarkan analisis yang telah dilakukan, berikut rekomendasi action items untuk mengurangi tingkat dropout mahasiswa:
+#### 1. Bimbingan Akademik Intensif
+- Monitoring akademik sejak semester 1–2
+- Bimbingan belajar untuk mata kuliah dengan kelulusan rendah
+- Mentoring mahasiswa baru oleh senior berprestasi
 
-1. **Program Bimbingan Akademik Intensif**
-Banyak mahasiswa yang dropout menunjukkan performa akademik rendah sejak semester pertama. Oleh karena itu:
+#### 2. Penyesuaian Sistem Pembelajaran
+- Optimasi jadwal kuliah siang
+- Pembelajaran hybrid (online & offline)
+- Penyediaan rekaman kuliah untuk fleksibilitas belajar
 
-   - Menerapkan sistem monitoring akademik yang lebih ketat, terutama untuk mahasiswa dengan nilai rendah di semester 1 dan 2
-   - Menyediakan program bimbingan belajar tambahan untuk mata kuliah dengan tingkat kelulusan rendah
-   - Membuat program mentoring yang menghubungkan mahasiswa baru dengan senior yang berprestasi
+#### 3. Dukungan Finansial dan Beasiswa
+- Perluasan beasiswa untuk mahasiswa ekonomi rendah yang berprestasi
+- Program kerja paruh waktu di kampus
+- Skema cicilan pembayaran SPP yang fleksibel
 
-2. **Penyesuaian Jadwal dan Sistem Pembelajaran**
-Insight menunjukkan bahwa mahasiswa kelas siang memiliki tingkat dropout lebih tinggi dibanding kelas malam. Maka dari itu:
-
-   - Mengoptimalkan jadwal kuliah siang dengan mempertimbangkan faktor-faktor yang mempengaruhi kehadiran
-   - Menerapkan sistem pembelajaran hybrid (kombinasi online dan offline) untuk memberikan fleksibilitas
-   - Menyediakan rekaman perkuliahan untuk mahasiswa yang tidak bisa hadir
-
-3. **Program Dukungan Finansial dan Beasiswa**
-Ditemukan bahwa sebagian besar mahasiswa memiliki utang, namun tetap membayar SPP tepat waktu, sementara jumlah penerima beasiswa masih rendah. Untuk itu:
-
-   - Memperluas program beasiswa untuk mahasiswa berprestasi dengan latar belakang ekonomi rendah
-   - Menyediakan program kerja paruh waktu di kampus untuk membantu mahasiswa dengan masalah finansial
-   - Membuat sistem pembayaran SPP yang lebih fleksibel dengan skema cicilan yang terjangkau
-
-4. **Peningkatan Kualitas Course Management**
-Beberapa program studi seperti Management memiliki tingkat dropout tinggi. Maka:
-
-   - Melakukan evaluasi dan perbaikan kurikulum untuk course dengan tingkat dropout tinggi
-   - Meningkatkan kualitas pengajaran dengan program pengembangan dosen
-   - Membuat program orientasi yang lebih komprehensif untuk mahasiswa baru, terutama untuk course dengan tingkat dropout tinggi
+#### 4. Perbaikan Manajemen Program Studi
+- Evaluasi kurikulum pada program studi dengan dropout tinggi (contoh: Management)
+- Pengembangan kompetensi dosen
+- Orientasi komprehensif untuk mahasiswa baru di program studi rentan
